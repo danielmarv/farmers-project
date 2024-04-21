@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer/select/sell</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #e9ecef; 
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .aside {
+      background-color: #28a745;
+      color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    .link-custom {
+      background-color: transparent; 
+      color: #fff; 
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      font-size: medium;
+      text-decoration: none;
+      padding: 10px;
+    }
+    .link-custom:hover {
+      background-color: #c3e6cb; 
+      color: #fff; 
+    }
+    .btn-icon {
+      margin-right: 10px;
+    }
+    .main-section {
+      background-color: #d4edda; /* Light green background color */
+      border: 1px solid #28a745; /* Thin green border */
+      border-radius: 5px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <aside class="aside">
+        <h4 class="mb-4">Market your products now</h4>
+        <a href="#" class="link-custom"><i class="fas fa-home btn-icon"></i> Home</a>
+        <div class="dropdown">
+            <a class="link-custom dropdown-toggle" href="#" role="button" id="databaseDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-database btn-icon"></i> My Database
+            </a>
+            <div class="dropdown-menu" aria-labelledby="databaseDropdown">
+              <a class="dropdown-item fa fa-plus mr-2" href="{% url 'add_product' %}">Add Item</a>
+              <a class="dropdown-item fa fa-eye mr-2" href="{% url 'product_list' %}">View Items</a>
+              <a class="dropdown-item fa fa-edit mr-2" href="{% url 'product_edit' %}">Update Item</a>
+            </div>
+          </div>
+        <div class="dropdown">
+          <a class="link-custom dropdown-toggle" href="#" role="button" id="marketDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-store btn-icon"></i> Market
+          </a>
+          <div class="dropdown-menu" aria-labelledby="marketDropdown">
+            <a class="dropdown-item fas fa-tag" href="{% url 'add_sell' %}">Sell Item</a>
+            <a class="dropdown-item fa fa-eye mr-2" href="{% url 'sell_list' %}">View Sales</a>
+            <a class="dropdown-item fa fa-edit btn-icon mr-2" href="#">Update Sales</a>
+          </div>
+        </div>
+        <a href="#" class="link-custom"><i class="fas fa-list btn-icon"></i> View Orders</a>
+        <a href="#" class="link-custom"><i class="fas fa-tasks btn-icon"></i> Process Order</a>
+        <a href="#" class="link-custom"><i class="fas fa-check-circle btn-icon"></i> Processed Orders</a>
+        <a href="#" class="link-custom "><i class="fa fa-user btn-icon"></i> My Profile</a>
+        <a href="#" class="link-custom "><i class="fa fa-comment btn-icon"></i> Feed Back</a>
+        <a href="#" class="link-custom"><i class="fas fa-arrow-left btn-icon"></i> Back</a>
+        <a href="#" class="link-custom"><i class="fas fa-sign-out-alt btn-icon"></i> Exit</a>
+      </aside>
+    </div>
+<style>
+     .btn {
+      border-radius: 20px;
+      padding: 10px 20px;
+    }
+</style>
+
+    <div class="col-md-9">
+
+      <!--<div class="main-section bg-light">
+        <h3>Manage and market your Farm products</h3>
+      </div>-->
+      <div class="main-section bg-light">
+        <h3>Select Category to sell</h3>
+        <div class="row mt-5 mb-5">
+            <div class="col-4">
+                <a href="{%  url 'add_sell' %}"> <button class="btn btn-primary">Poultry </button></a>
+            </div>
+            <div class="col-4 ">
+                <a href="{%  url 'add_sell_cattle' %}"> <button class="btn btn-primary">Cattle </button></a>
+            </div>
+            <div class="col">
+                <a href="{%  url 'add_sell_legumes' %}"> <button class="btn btn-primary">Legumes </button></a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-4 ">
+               <a href="{%  url 'add_sell_roottubers' %}"> <button class="btn btn-primary">Root tubers </button></a>
+            </div>
+            <div class="col-4 ">
+                <a href="{%  url 'add_sell_cereals' %}"> <button class="btn btn-primary">Cereals </button></a>
+            </div>
+            <div class="col">
+                <button class="btn btn-info ">Others</button>
+            </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

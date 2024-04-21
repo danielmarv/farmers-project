@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process order</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar button {
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .navbar button:hover {
+            background-color: #45a049;
+        }
+
+        .logo {
+            margin-right: 10px;
+        }
+
+        .search-form {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        .search-button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <button onclick="window.location.href='home_page_url'">Home</button>
+            <button onclick="window.location.href='delete_page_url'">Delete</button>
+            <button onclick="window.location.href='logout_page_url'">Logout</button>
+        </div>
+        <div class="logo">
+            <img src="logo_image_url" alt="Logo" width="100">
+        </div>
+    </div>
+
+    <div class="search-form">
+        <form action="{% url 'product_list' %}" method="get">
+            <input type="text" class="search-input" name="search" placeholder="Type here to Search...">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <h1 class="text-primary">Farm Link Database</h1>
+    <table class="mx-5">
+        <tr>
+            <th>Name</th>
+            <th>Origin</th>
+            <th>Category</th>
+            <th>Packaging</th>
+            <th>Harvest Date</th>
+            <th>Cost Price</th>
+            <th>Shelf Life</th>
+            <th>Date Added</th>
+            <th>Activity</th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.origin }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.packaging }}</td>
+            <td>{{ product.harvest_date }}</td>
+            <td>{{ product.cost_price }}</td>
+            <td>{{ product.Shelf_life }}</td>
+            <td>{{ product.date_added }}</td>
+            <td>
+
+                <button onclick="window.location.href='{% url 'product_update' product.id %}'">
+                    <i class="fas fa-edit"></i> Process Order
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

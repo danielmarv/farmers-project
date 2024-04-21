@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .navbar button {
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .navbar button:hover {
+            background-color: #45a049;
+        }
+
+
+        .logo {
+            margin-right: 10px;
+        }
+
+
+        .search-form {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+        }
+
+
+        .search-input {
+            padding: 8px;
+            width: 200px;
+        }
+
+     
+        .search-button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #45a049;
+        }
+
+      
+        .print-button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .print-button:hover {
+            background-color: #45a049;
+        }
+
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="{%  url 'farmer-board' %}"> <button class="btn">Home</button></a>
+            <button >Logout</button>
+        </div>
+        <div class="logo">
+            <img src="logo_image_url" alt="Logo" width="100">
+        </div>
+        <div>
+            <button class="print-button" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+        </div>
+    </div>
+
+    <div class="search-form">
+        <form action="{% url 'sell_list' %}" method="get">
+            <input type="text" class="search-input" name="search" placeholder="Type here to Search...">
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <h1 class="text-primary">Farm Link Products on Sale</h1>
+    <table class="mx-5">
+        <tr>
+            <th>Product</th>
+            <th>Caption</th>
+            <th>Picture</th>
+            <th>Date Posted</th>
+        </tr>
+
+        {% for Sell_poultry in Sell_poultrys %}
+        <tr>
+            <td>{{ Sell_poultry.product.name }}</td>
+            <td>{{ Sell_poultry.caption }}</td>
+            <td>{{ Sell_poultry.picture }}</td>
+            <td>{{ Sell_poultry.date_posted }}</td>
+        </tr>
+        {% endfor %}
+        {% for Sell_cattle in Sell_cattles %}
+        <tr>
+            <td>{{ Sell_cattle.product.name }}</td>
+            <td>{{ Sell_cattle.caption }}</td>
+            <td>{{ Sell_cattle.picture }}</td>
+            <td>{{ Sell_cattle.date_posted }}</td>
+        </tr>
+
+        {% endfor %}
+        {% for Sell_roottubers in Sell_roottuberss %}
+        <tr>
+            <td>{{ Sell_roottubers.product.name }}</td>
+            <td>{{ Sell_roottubers.caption }}</td>
+            <td>{{ Sell_roottubers.picture }}</td>
+            <td>{{ Sell_roottubers.date_posted }}</td>
+        </tr>
+        {% endfor %}
+        {% for Sell_legumesSell_legumes in Sell_legumess %}
+        <tr>
+            <td>{{ Sell_legumes.product.name }}</td>
+            <td>{{ Sell_legumes.caption }}</td>
+            <td>{{ Sell_legumes.picture }}</td>
+            <td>{{ Sell_legumes.date_posted }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
